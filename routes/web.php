@@ -12,7 +12,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::prefix('/admin')->group(function () {
     // Rota de login (sem autenticação)
     Route::get('/login', [AdminController::class, 'login'])->name('login');
-    Route::get('/login', [AdminController::class, 'loginAction']);
+    Route::post('/login', [AdminController::class, 'loginAction']);
+
 
     Route::get('/register', [AdminController::class, 'register']);
 
