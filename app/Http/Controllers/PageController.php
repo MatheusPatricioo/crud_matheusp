@@ -55,7 +55,7 @@ class PageController extends Controller
                 'links' => $links,
             ]);
         } else {
-            return view('pagina_nao_encontrada');
+            return view('notfound');
         }
 
     }

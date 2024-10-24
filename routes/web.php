@@ -9,3 +9,4 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/{slug}', [PageController::class, 'index']);
+
