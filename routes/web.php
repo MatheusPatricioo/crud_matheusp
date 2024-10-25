@@ -24,6 +24,10 @@ Route::prefix('/admin')->group(function () {
 
     // Rota protegida pelo middleware de autenticação
     Route::get('/', [AdminController::class, 'index'])->middleware('auth');
+
+    Route::get('/{slug}/links', [AdminController::class, 'pageLinks']);
+    Route::get('/{slug}/design', [AdminController::class, 'pageDesign']);
+    Route::get('/{slug}/stats', [AdminController::class, 'pageStats']);
 });
 
 // Rota para páginas dinâmicas

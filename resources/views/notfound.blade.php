@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-    <h1>Página Não Encontrada</h1>
+    <h2>Página não encontrada</h2>
     <p>Desculpe, a página que você está tentando acessar não existe ou foi removida.</p>
     <a href="{{ url('/') }}">Voltar para a Página Inicial</a>
 </body>

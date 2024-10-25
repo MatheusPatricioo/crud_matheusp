@@ -142,4 +142,36 @@ class AdminController extends Controller
         return redirect ('/admin');
     }
 
+    public function pageLinks($slug) {
+        $user = Auth::user();
+        $page = page::where('slug', $slug)
+        ->where('id_user', $user->id)
+        ->first();
+
+        if ($page) {
+            return view ('admin/page_links', [
+                'menu' =>'links',
+                'page' => $page
+            ]);
+        } else {
+            return redirect ('/admin');
+        }
+
+        return view('admin/page_links', [
+            'menu' => 'links'
+        ]);
+    }
+
+    public function pageDesign($slug) {
+        return view('admin/page_design', [
+            'menu' => 'design'
+        ]);
+    }
+
+    public function pageStats($slug) {
+        return view('admin/page_stats', [
+            'menu' => 'stats'
+        ]);
+    }
+
 }
