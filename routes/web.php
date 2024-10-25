@@ -20,6 +20,8 @@ Route::prefix('/admin')->group(function () {
     // Rota para enviar o formulário de registro
     Route::post('/register', [AdminController::class, 'registerAction']);
 
+    Route::get('/logout', [AdminController::class, 'logout']);
+
     // Rota protegida pelo middleware de autenticação
     Route::get('/', [AdminController::class, 'index'])->middleware('auth');
 });
