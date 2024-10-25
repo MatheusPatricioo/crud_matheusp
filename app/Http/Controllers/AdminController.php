@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+
+use App\Models\User;
+use App\Models\Page;
+
 
 class AdminController extends Controller
 {
@@ -113,17 +116,25 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $title = 'Dashboard Admin';
-        $bg = '#f4f4f4'; // Exemplo de cor de fundo
-        $font_color = '#333'; // Exemplo de cor da fonte
-        $profile_image = 'path/to/profile-image.jpg'; // Substitua pelo caminho da imagem de perfil
-        $description = 'Bem-vindo ao painel de pipipi popopo';
-        $links = [
-            (object) ['url' => 'https://example.com', 'title' => 'Exemplo 1'],
-            (object) ['url' => 'https://another-example.com', 'title' => 'Exemplo 2']
-        ];
+        $user = Auth::user();
 
-        return view('index', compact('title', 'bg', 'font_color', 'profile_image', 'description', 'links'));
+        $pages = Page::where('id_user', $user->id)->get();
+
+        // $title = 'Dashboard Admin';
+        // $bg = '#f4f4f4'; // Exemplo de cor de fundo
+        // $font_color = '#333'; // Exemplo de cor da fonte
+        // $profile_image = 'path/to/profile-image.jpg'; // Substitua pelo caminho da imagem de perfil
+        // $description = 'Bem-vindo ao painel de pipipi popopo';
+        // $links = [
+        //     (object) ['url' => 'https://example.com', 'title' => 'Exemplo 1'],
+        //     (object) ['url' => 'https://another-example.com', 'title' => 'Exemplo 2']
+        // ];
+
+        // return view('admin.index',
+        //  compact('title', 'bg', 'font_color', 'profile_image', 'description', 'links'));
+        return view('admin.index', [
+            'pages' => $pages
+        ]);
     }
 
     public function logout () {
